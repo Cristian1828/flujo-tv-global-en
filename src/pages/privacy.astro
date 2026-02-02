@@ -1,0 +1,224 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { getTranslations } from '../config/i18n';
+
+const currentLang = 'es';
+const t = getTranslations(currentLang);
+---
+
+<Layout title="Política de Privacidad - Flujo TV">
+  <Navbar />
+  
+  <main class="legal-page">
+    <div class="container">
+      <div class="legal-content">
+        <h1>Política de Privacidad</h1>
+        
+        <section>
+          <h2>1. Información que Recopilamos</h2>
+          <p>En Flujo TV, recopilamos la siguiente información:</p>
+          <ul>
+            <li><strong>Información de contacto:</strong> Nombre, número de teléfono, dirección de correo electrónico</li>
+            <li><strong>Información de pago:</strong> Detalles necesarios para procesar transacciones</li>
+            <li><strong>Información del dispositivo:</strong> Tipo de dispositivo, sistema operativo, dirección IP</li>
+            <li><strong>Información de uso:</strong> Contenido visualizado, tiempo de visualización, preferencias</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h2>2. Cómo Utilizamos su Información</h2>
+          <p>Utilizamos la información recopilada para:</p>
+          <ul>
+            <li>Proporcionar y mantener nuestro servicio de streaming</li>
+            <li>Procesar pagos y gestionar suscripciones</li>
+            <li>Enviar notificaciones importantes sobre el servicio</li>
+            <li>Mejorar la calidad y personalización del contenido</li>
+            <li>Detectar y prevenir fraudes o uso no autorizado</li>
+            <li>Cumplir con obligaciones legales</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h2>3. Compartir Información</h2>
+          <p>No vendemos ni alquilamos su información personal a terceros. Podemos compartir información con:</p>
+          <ul>
+            <li><strong>Proveedores de servicios:</strong> Para procesamiento de pagos y soporte técnico</li>
+            <li><strong>Autoridades legales:</strong> Cuando sea requerido por ley</li>
+            <li><strong>Socios comerciales:</strong> Solo con su consentimiento explícito</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h2>4. Seguridad de los Datos</h2>
+          <p>Implementamos medidas de seguridad técnicas y organizativas para proteger su información personal:</p>
+          <ul>
+            <li>Encriptación de datos sensibles</li>
+            <li>Acceso restringido a información personal</li>
+            <li>Monitoreo regular de sistemas de seguridad</li>
+            <li>Capacitación del personal en protección de datos</li>
+          </ul>
+          <p>Sin embargo, ningún método de transmisión por internet es 100% seguro, y no podemos garantizar seguridad absoluta.</p>
+        </section>
+        
+        <section>
+          <h2>5. Retención de Datos</h2>
+          <p>Conservamos su información personal durante el tiempo que su cuenta esté activa o según sea necesario para:</p>
+          <ul>
+            <li>Proporcionar nuestros servicios</li>
+            <li>Cumplir con obligaciones legales</li>
+            <li>Resolver disputas</li>
+            <li>Hacer cumplir nuestros acuerdos</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h2>6. Sus Derechos</h2>
+          <p>Usted tiene derecho a:</p>
+          <ul>
+            <li><strong>Acceso:</strong> Solicitar una copia de su información personal</li>
+            <li><strong>Rectificación:</strong> Corregir información inexacta o incompleta</li>
+            <li><strong>Eliminación:</strong> Solicitar la eliminación de su información personal</li>
+            <li><strong>Portabilidad:</strong> Recibir su información en un formato estructurado</li>
+            <li><strong>Oposición:</strong> Oponerse al procesamiento de su información</li>
+            <li><strong>Limitación:</strong> Solicitar la limitación del procesamiento</li>
+          </ul>
+          <p>Para ejercer estos derechos, contáctenos a través de nuestros canales de soporte.</p>
+        </section>
+        
+        <section>
+          <h2>7. Cookies y Tecnologías Similares</h2>
+          <p>Utilizamos cookies y tecnologías similares para:</p>
+          <ul>
+            <li>Recordar sus preferencias y configuraciones</li>
+            <li>Analizar el uso del servicio</li>
+            <li>Mejorar la experiencia del usuario</li>
+            <li>Proporcionar contenido personalizado</li>
+          </ul>
+          <p>Puede configurar su navegador para rechazar cookies, aunque esto puede afectar la funcionalidad del servicio.</p>
+        </section>
+        
+        <section>
+          <h2>8. Privacidad de Menores</h2>
+          <p>Nuestro servicio no está dirigido a menores de 18 años. No recopilamos intencionalmente información personal de menores. Si descubrimos que hemos recopilado información de un menor, la eliminaremos inmediatamente.</p>
+        </section>
+        
+        <section>
+          <h2>9. Transferencias Internacionales</h2>
+          <p>Su información puede ser transferida y procesada en países fuera de su país de residencia. Nos aseguramos de que dichas transferencias cumplan con las leyes de protección de datos aplicables.</p>
+        </section>
+        
+        <section>
+          <h2>10. Cambios a esta Política</h2>
+          <p>Podemos actualizar esta Política de Privacidad periódicamente. Le notificaremos sobre cambios significativos publicando la nueva política en nuestro sitio web y actualizando la fecha de "Última actualización".</p>
+        </section>
+        
+        <section>
+          <h2>11. Contacto</h2>
+          <p>Si tiene preguntas sobre esta Política de Privacidad o sobre cómo manejamos su información personal, contáctenos:</p>
+          <ul>
+            <li>WhatsApp: +51 914 326 729</li>
+            <li>Email: soporte@flujooficial.com</li>
+          </ul>
+        </section>
+        
+        <p class="last-updated">Última actualización: Febrero 2026</p>
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+  .legal-page {
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: var(--space-3xl);
+    background: var(--color-dark);
+  }
+  
+  .legal-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--color-dark-secondary);
+    padding: var(--space-3xl);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .legal-content h1 {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    margin-bottom: var(--space-2xl);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .legal-content h2 {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-light);
+    margin-top: var(--space-2xl);
+    margin-bottom: var(--space-md);
+  }
+  
+  .legal-content section {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .legal-content p {
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--color-gray-light);
+    margin-bottom: var(--space-md);
+  }
+  
+  .legal-content ul {
+    list-style: none;
+    padding-left: var(--space-lg);
+    margin-bottom: var(--space-md);
+  }
+  
+  .legal-content li {
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--color-gray-light);
+    margin-bottom: var(--space-sm);
+    position: relative;
+  }
+  
+  .legal-content li::before {
+    content: '•';
+    color: var(--color-primary);
+    font-weight: bold;
+    position: absolute;
+    left: -1rem;
+  }
+  
+  .last-updated {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: var(--text-sm);
+    color: var(--color-gray);
+    font-style: italic;
+  }
+  
+  @media (max-width: 768px) {
+    .legal-content {
+      padding: var(--space-xl);
+    }
+    
+    .legal-content h1 {
+      font-size: var(--text-3xl);
+    }
+    
+    .legal-content h2 {
+      font-size: var(--text-xl);
+    }
+  }
+</style>

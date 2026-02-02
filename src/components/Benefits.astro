@@ -1,0 +1,154 @@
+---
+import { getTranslations } from '../config/i18n';
+
+const currentLang = 'es';
+const t = getTranslations(currentLang);
+---
+
+<section class="benefits section" id="benefits">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title" data-i18n="benefits.title">{t.benefits.title}</h2>
+      <p class="section-subtitle" data-i18n="benefits.subtitle">{t.benefits.subtitle}</p>
+    </div>
+    
+    <!-- Benefits Grid -->
+    <div class="benefits-grid">
+      <!-- Benefit 1: Stability -->
+      <div class="benefit-card card card-glass">
+        <div class="benefit-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="M12 8v4M12 16h.01"></path>
+          </svg>
+        </div>
+        <h3 class="benefit-title" data-i18n="benefits.stability.title">{t.benefits.stability.title}</h3>
+        <p class="benefit-description" data-i18n="benefits.stability.description">{t.benefits.stability.description}</p>
+      </div>
+      
+      <!-- Benefit 2: Catalog -->
+      <div class="benefit-card card card-glass">
+        <div class="benefit-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+            <polyline points="17 2 12 7 7 2"></polyline>
+          </svg>
+        </div>
+        <h3 class="benefit-title" data-i18n="benefits.catalog.title">{t.benefits.catalog.title}</h3>
+        <p class="benefit-description" data-i18n="benefits.catalog.description">{t.benefits.catalog.description}</p>
+      </div>
+      
+      <!-- Benefit 3: Quality -->
+      <div class="benefit-card card card-glass">
+        <div class="benefit-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </div>
+        <h3 class="benefit-title" data-i18n="benefits.quality.title">{t.benefits.quality.title}</h3>
+        <p class="benefit-description" data-i18n="benefits.quality.description">{t.benefits.quality.description}</p>
+      </div>
+      
+      <!-- Benefit 4: Multi-Login -->
+      <div class="benefit-card card card-glass">
+        <div class="benefit-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <h3 class="benefit-title" data-i18n="benefits.multiLogin.title">{t.benefits.multiLogin.title}</h3>
+        <p class="benefit-description" data-i18n="benefits.multiLogin.description">{t.benefits.multiLogin.description}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits {
+    background: 
+      linear-gradient(135deg, rgba(10, 14, 39, 0.92) 0%, rgba(22, 33, 62, 0.88) 50%, rgba(15, 52, 96, 0.92) 100%),
+      url('/benefits.png') center/cover no-repeat;
+    position: relative;
+  }
+  
+  .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--space-3xl);
+  }
+  
+  .section-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    margin-bottom: var(--space-md);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .section-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-gray-light);
+  }
+  
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+  
+  .benefit-card {
+    text-align: center;
+    transition: all var(--transition-base);
+  }
+  
+  .benefit-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 102, 255, 0.3);
+  }
+  
+  .benefit-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-lg);
+    background: var(--gradient-primary);
+    border-radius: var(--radius-xl);
+    color: var(--color-light);
+  }
+  
+  .benefit-title {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+    color: var(--color-light);
+  }
+  
+  .benefit-description {
+    font-size: var(--text-base);
+    color: var(--color-gray-light);
+    line-height: 1.6;
+  }
+  
+  @media (min-width: 768px) {
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .benefits-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .section-title {
+      font-size: var(--text-4xl);
+    }
+  }
+</style>

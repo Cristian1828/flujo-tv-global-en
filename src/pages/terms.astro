@@ -1,0 +1,219 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { getTranslations } from '../config/i18n';
+
+const currentLang = 'es';
+const t = getTranslations(currentLang);
+---
+
+<Layout title="Términos y Condiciones - Flujo TV">
+  <Navbar />
+  
+  <main class="legal-page">
+    <div class="container">
+      <div class="legal-content">
+        <h1>Términos y Condiciones</h1>
+        
+        <section>
+          <h2>1. Aceptación de los Términos</h2>
+          <p>Al acceder y utilizar los servicios de Flujo TV, usted acepta estar sujeto a estos Términos y Condiciones. Si no está de acuerdo con alguna parte de estos términos, no debe utilizar nuestro servicio.</p>
+        </section>
+        
+        <section>
+          <h2>2. Descripción del Servicio</h2>
+          <p>Flujo TV es un servicio de distribución de contenido de streaming que proporciona acceso a canales de televisión en vivo, películas, series y contenido deportivo a través de dispositivos Android compatibles.</p>
+        </section>
+        
+        <section>
+          <h2>3. Registro y Cuenta</h2>
+          <p>Para utilizar nuestro servicio, debe:</p>
+          <ul>
+            <li>Proporcionar información precisa y completa durante el proceso de registro</li>
+            <li>Mantener la seguridad de su cuenta y contraseña</li>
+            <li>Notificarnos inmediatamente sobre cualquier uso no autorizado de su cuenta</li>
+            <li>Ser mayor de 18 años o tener el consentimiento de un padre o tutor legal</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h2>4. Planes y Pagos</h2>
+          <p>Los planes de suscripción están sujetos a los precios publicados en nuestro sitio web. Los pagos son procesados a través de WhatsApp y métodos de pago acordados. No ofrecemos reembolsos una vez activado el servicio.</p>
+        </section>
+        
+        <section>
+          <h2>5. Uso Aceptable</h2>
+          <p>Usted se compromete a:</p>
+          <ul>
+            <li>Utilizar el servicio solo para fines personales y no comerciales</li>
+            <li>No compartir su cuenta con personas fuera de su hogar</li>
+            <li>No revender, redistribuir o transferir el servicio</li>
+            <li>No utilizar el servicio para actividades ilegales</li>
+            <li>Respetar el límite de 3 pantallas simultáneas por cuenta</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h2>6. Dispositivos Compatibles</h2>
+          <p>El servicio está diseñado exclusivamente para dispositivos Android, incluyendo:</p>
+          <ul>
+            <li>Teléfonos y tablets Android</li>
+            <li>TV Box Android</li>
+            <li>Amazon Fire Stick</li>
+            <li>Google TV / Chromecast</li>
+            <li>Xiaomi Mi Stick</li>
+          </ul>
+          <p><strong>Nota importante:</strong> El servicio NO es compatible con Smart TVs Samsung, LG u otras marcas que no utilicen Android TV nativo.</p>
+        </section>
+        
+        <section>
+          <h2>7. Calidad del Servicio</h2>
+          <p>La calidad del streaming depende de su conexión a internet. Recomendamos:</p>
+          <ul>
+            <li>Mínimo 10 Mbps para contenido HD</li>
+            <li>20-30 Mbps para contenido 4K</li>
+          </ul>
+          <p>No garantizamos disponibilidad del 100% del servicio debido a factores fuera de nuestro control.</p>
+        </section>
+        
+        <section>
+          <h2>8. Propiedad Intelectual</h2>
+          <p>Todo el contenido, marcas comerciales y material en el servicio son propiedad de Flujo TV o sus licenciantes. No se otorga ningún derecho de propiedad intelectual excepto el derecho limitado de uso personal.</p>
+        </section>
+        
+        <section>
+          <h2>9. Suspensión y Terminación</h2>
+          <p>Nos reservamos el derecho de suspender o terminar su acceso al servicio si:</p>
+          <ul>
+            <li>Viola estos Términos y Condiciones</li>
+            <li>Utiliza el servicio de manera fraudulenta</li>
+            <li>No realiza los pagos correspondientes</li>
+            <li>Comparte su cuenta de manera no autorizada</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h2>10. Limitación de Responsabilidad</h2>
+          <p>Flujo TV no será responsable por:</p>
+          <ul>
+            <li>Interrupciones del servicio debido a problemas técnicos</li>
+            <li>Pérdida de datos o contenido</li>
+            <li>Daños indirectos o consecuentes</li>
+            <li>Problemas de compatibilidad con dispositivos</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h2>11. Modificaciones</h2>
+          <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio web.</p>
+        </section>
+        
+        <section>
+          <h2>12. Contacto</h2>
+          <p>Para preguntas sobre estos Términos y Condiciones, contáctenos:</p>
+          <ul>
+            <li>WhatsApp: +51 914 326 729</li>
+            <li>Email: soporte@flujooficial.com</li>
+          </ul>
+        </section>
+        
+        <p class="last-updated">Última actualización: Febrero 2026</p>
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+  .legal-page {
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: var(--space-3xl);
+    background: var(--color-dark);
+  }
+  
+  .legal-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--color-dark-secondary);
+    padding: var(--space-3xl);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .legal-content h1 {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    margin-bottom: var(--space-2xl);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .legal-content h2 {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-light);
+    margin-top: var(--space-2xl);
+    margin-bottom: var(--space-md);
+  }
+  
+  .legal-content section {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .legal-content p {
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--color-gray-light);
+    margin-bottom: var(--space-md);
+  }
+  
+  .legal-content ul {
+    list-style: none;
+    padding-left: var(--space-lg);
+    margin-bottom: var(--space-md);
+  }
+  
+  .legal-content li {
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--color-gray-light);
+    margin-bottom: var(--space-sm);
+    position: relative;
+  }
+  
+  .legal-content li::before {
+    content: '•';
+    color: var(--color-primary);
+    font-weight: bold;
+    position: absolute;
+    left: -1rem;
+  }
+  
+  .last-updated {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: var(--text-sm);
+    color: var(--color-gray);
+    font-style: italic;
+  }
+  
+  @media (max-width: 768px) {
+    .legal-content {
+      padding: var(--space-xl);
+    }
+    
+    .legal-content h1 {
+      font-size: var(--text-3xl);
+    }
+    
+    .legal-content h2 {
+      font-size: var(--text-xl);
+    }
+  }
+</style>

@@ -1,0 +1,141 @@
+---
+const rows = [
+  { k: 'Video quality', a: '4K + HDR (select)', b: 'Varies' },
+  { k: 'Ads', a: 'None', b: 'Often included' },
+  { k: 'Devices', a: 'Up to 5', b: 'Limited' },
+  { k: 'Support', a: '24/7', b: 'Business hours' },
+  { k: 'Contracts', a: 'No', b: 'Sometimes' },
+];
+---
+
+<section class="relative py-24">
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <div class="reveal">
+      <div class="font-mono over">COMPARISON</div>
+      <h2 class="font-display font-black text-5xl md:text-6xl mt-4">
+        Premium experience,
+        <span style="color: var(--accent);"> by design</span>.
+      </h2>
+    </div>
+
+    <div class="mt-10 card wrap reveal" style="animation-delay:0.08s;">
+      <div class="hdr">
+        <div class="font-mono over">MATRIX</div>
+        <div class="cols">
+          <div class="c a">FLUJO</div>
+          <div class="c b">TYPICAL</div>
+        </div>
+      </div>
+
+      <div class="body">
+        {rows.map((r) => (
+          <div class="r">
+            <div class="k">{r.k}</div>
+            <div class="cells">
+              <div class="cell good">
+                <span class="tick" aria-hidden="true">✓</span>
+                <span>{r.a}</span>
+              </div>
+              <div class="cell bad">
+                <span class="tick" aria-hidden="true">•</span>
+                <span>{r.b}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .over {
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 11px;
+  }
+
+  .wrap { overflow: hidden; }
+
+  .hdr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    background: linear-gradient(90deg, rgba(82,231,255,0.10), rgba(167,255,106,0.06));
+  }
+
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .c {
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(0,0,0,0.18);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .c.a { color: rgba(255,255,255,0.86); border-color: rgba(82,231,255,0.22); }
+  .c.b { color: rgba(255,255,255,0.62); }
+
+  .body { padding: 4px 18px 18px 18px; }
+
+  .r {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+  }
+
+  .r:last-child { border-bottom: 0; }
+
+  .k { color: rgba(255,255,255,0.84); font-weight: 800; }
+
+  .cells {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .cell {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(0,0,0,0.18);
+    color: rgba(255,255,255,0.70);
+  }
+
+  .cell.good {
+    border-color: rgba(82,231,255,0.20);
+    background: linear-gradient(90deg, rgba(82,231,255,0.08), rgba(0,0,0,0.18));
+    color: rgba(255,255,255,0.78);
+  }
+
+  .tick {
+    color: rgba(82,231,255,0.95);
+    font-weight: 900;
+  }
+
+  .cell.bad .tick { color: rgba(255,255,255,0.40); }
+
+  @media (min-width: 900px) {
+    .r { grid-template-columns: 260px 1fr; align-items: center; }
+    .cells { grid-template-columns: 1fr 1fr; }
+  }
+</style>

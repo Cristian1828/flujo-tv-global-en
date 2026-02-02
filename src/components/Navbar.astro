@@ -1,0 +1,125 @@
+---
+import { site } from '../config/site';
+import { getTranslations } from '../config/i18n';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+const currentLang = 'es';
+const t = getTranslations(currentLang);
+
+const whatsappLink = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.defaultWhatsappText)}`;
+---
+
+<header class="sticky top-0 z-50 bg-[#0a0e27]/95 backdrop-blur-lg border-b border-white/10 shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <nav class="flex items-center justify-between py-4">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <img 
+          src="/logo_flujo.png"
+          alt="FLUJO TV"
+          class="h-10 md:h-12 w-auto group-hover:scale-110 transition-transform duration-300"
+        />
+        <div class="flex flex-col">
+          <div class="text-lg md:text-xl font-black leading-none">
+            <span class="text-white">FLUJO</span><span class="text-cyan-400"> TV</span>
+          </div>
+          <span class="text-xs text-gray-400 font-medium">{site.localeLabel}</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-6 lg:gap-8">
+        <a href="/" class="text-gray-300 hover:text-cyan-400 font-semibold transition-colors duration-300" data-i18n="nav.home">
+          {t.nav.home}
+        </a>
+        <a href="/#benefits" class="text-gray-300 hover:text-cyan-400 font-semibold transition-colors duration-300" data-i18n="nav.benefits">
+          {t.nav.benefits}
+        </a>
+        <a href="/#how-it-works" class="text-gray-300 hover:text-cyan-400 font-semibold transition-colors duration-300" data-i18n="nav.howItWorks">
+          {t.nav.howItWorks}
+        </a>
+        <a href="/#plans" class="text-gray-300 hover:text-cyan-400 font-semibold transition-colors duration-300" data-i18n="nav.plans">
+          {t.nav.plans}
+        </a>
+        <a href="/#download" class="text-gray-300 hover:text-cyan-400 font-semibold transition-colors duration-300" data-i18n="nav.download">
+          {t.nav.download}
+        </a>
+        <a href="/#faq" class="text-gray-300 hover:text-cyan-400 font-semibold transition-colors duration-300" data-i18n="nav.faq">
+          {t.nav.faq}
+        </a>
+        
+        <LanguageSwitcher />
+        
+        <!-- Comprar Button -->
+        <a 
+          href={whatsappLink}
+          class="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl hover:shadow-xl hover:scale-105 transition-all duration-300"
+          data-i18n="nav.buyNow"
+        >
+          <span>{t.nav.buyNow}</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-btn"
+        class="md:hidden p-2 bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-xl"
+        aria-label="Menú"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <div class="flex flex-col gap-4">
+        <a href="#home" class="text-gray-300 hover:text-cyan-400 font-semibold transition-colors duration-300" data-i18n="nav.home">
+          {t.nav.home}
+        </a>
+        <a href="#benefits" class="text-gray-300 hover:text-cyan-400 font-semibold transition-colors duration-300" data-i18n="nav.benefits">
+          {t.nav.benefits}
+        </a>
+        <a href="#how-it-works" class="text-gray-300 hover:text-cyan-400 font-semibold transition-colors duration-300" data-i18n="nav.howItWorks">
+          {t.nav.howItWorks}
+        </a>
+        <a href="#plans" class="text-gray-300 hover:text-cyan-400 font-semibold transition-colors duration-300" data-i18n="nav.plans">
+          {t.nav.plans}
+        </a>
+        <a href="#faq" class="text-gray-300 hover:text-cyan-400 font-semibold transition-colors duration-300" data-i18n="nav.faq">
+          {t.nav.faq}
+        </a>
+        <a href="#download" class="text-gray-300 hover:text-cyan-400 font-semibold transition-colors duration-300" data-i18n="nav.download">
+          {t.nav.download}
+        </a>
+        <a 
+          href={whatsappLink}
+          class="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl"
+          data-i18n="nav.buyNow"
+        >
+          <span>{t.nav.buyNow}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+    const menu = document.getElementById('mobile-menu');
+    menu?.classList.toggle('hidden');
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href') as string);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('mobile-menu')?.classList.add('hidden');
+      }
+    });
+  });
+</script>

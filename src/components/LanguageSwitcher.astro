@@ -1,0 +1,161 @@
+---
+// Language Switcher Component
+---
+
+<div class="language-switcher">
+  <button id="lang-toggle" class="lang-btn" aria-label="Cambiar idioma">
+    <span class="lang-current" id="current-lang">ES</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M6 9l6 6 6-6"/>
+    </svg>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <button class="lang-option" data-lang="es">
+      <span class="lang-flag">🇪🇸</span>
+      <span>Español</span>
+    </button>
+    <button class="lang-option" data-lang="en">
+      <span class="lang-flag">🇺🇸</span>
+      <span>English</span>
+    </button>
+  </div>
+</div>
+
+<style>
+  .language-switcher {
+    position: relative;
+  }
+  
+  .lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    color: var(--color-light);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  
+  .lang-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .lang-btn svg {
+    transition: transform var(--transition-fast);
+  }
+  
+  .lang-btn.active svg {
+    transform: rotate(180deg);
+  }
+  
+  .lang-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    min-width: 150px;
+    background: var(--color-dark-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all var(--transition-base);
+    z-index: var(--z-dropdown);
+  }
+  
+  .lang-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .lang-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: none;
+    color: var(--color-light);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+  }
+  
+  .lang-option:first-child {
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  
+  .lang-option:last-child {
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  }
+  
+  .lang-option:hover {
+    background: rgba(0, 102, 255, 0.1);
+  }
+  
+  .lang-option.active {
+    background: rgba(0, 102, 255, 0.2);
+    color: var(--color-primary-light);
+  }
+  
+  .lang-flag {
+    font-size: 1.25rem;
+  }
+</style>
+
+<script>
+  // Language Switcher Logic
+  const langToggle = document.getElementById('lang-toggle');
+  const langDropdown = document.getElementById('lang-dropdown');
+  const currentLangSpan = document.getElementById('current-lang');
+  const langOptions = document.querySelectorAll('.lang-option');
+  
+  // Get current language from localStorage or default to 'es'
+  let currentLang = localStorage.getItem('flujo-language') || 'es';
+  currentLangSpan.textContent = currentLang.toUpperCase();
+  
+  // Mark active language
+  langOptions.forEach(option => {
+    if (option.dataset.lang === currentLang) {
+      option.classList.add('active');
+    }
+  });
+  
+  // Toggle dropdown
+  langToggle?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    langToggle.classList.toggle('active');
+    langDropdown?.classList.toggle('show');
+  });
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', () => {
+    langToggle?.classList.remove('active');
+    langDropdown?.classList.remove('show');
+  });
+  
+  // Language selection
+  langOptions.forEach(option => {
+    option.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const selectedLang = option.dataset.lang;
+      
+      if (selectedLang && selectedLang !== currentLang) {
+        // Save to localStorage
+        localStorage.setItem('flujo-language', selectedLang);
+        
+        // Reload page to apply new language
+        window.location.reload();
+      }
+    });
+  });
+</script>

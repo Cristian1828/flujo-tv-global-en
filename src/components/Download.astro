@@ -1,0 +1,179 @@
+---
+import { site } from '../config/site';
+import { getTranslations } from '../config/i18n';
+
+const currentLang = 'es';
+const t = getTranslations(currentLang);
+
+const whatsappLink = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.defaultWhatsappText)}`;
+---
+
+<section class="download section" id="download">
+  <div class="container">
+    <div class="download-content">
+      <div class="download-text">
+        <h2 class="download-title" data-i18n="download.title">{t.download.title}</h2>
+        <h3 class="download-subtitle" data-i18n="download.subtitle">{t.download.subtitle}</h3>
+        <p class="download-description" data-i18n="download.description">{t.download.description}</p>
+        
+        <a href={whatsappLink} class="btn btn-success btn-lg download-cta">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          <span data-i18n="download.cta">{t.download.cta}</span>
+        </a>
+        
+        <div class="download-trust">
+          <div class="trust-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <path d="M9 12l2 2 4-4"></path>
+            </svg>
+            <span>Instalación Segura</span>
+          </div>
+          <div class="trust-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span>Verificado</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="download-visual">
+        <div class="visual-glow"></div>
+        <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .download {
+    background: 
+      linear-gradient(135deg, rgba(10, 14, 39, 0.92) 0%, rgba(22, 33, 62, 0.88) 50%, rgba(15, 52, 96, 0.92) 100%),
+      url('/download.png') center/cover no-repeat;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .download::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 200, 83, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  
+  .download-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .download-text {
+    text-align: center;
+  }
+  
+  .download-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    margin-bottom: var(--space-sm);
+    color: var(--color-light);
+  }
+  
+  .download-subtitle {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+    background: var(--gradient-success);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .download-description {
+    font-size: var(--text-base);
+    color: var(--color-gray-light);
+    line-height: 1.6;
+    margin-bottom: var(--space-2xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .download-cta {
+    margin-bottom: var(--space-lg);
+  }
+  
+  .download-trust {
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+  }
+  
+  .trust-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--text-sm);
+    color: var(--color-gray-light);
+  }
+  
+  .trust-badge svg {
+    color: var(--color-success);
+  }
+  
+  .download-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .visual-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 200, 83, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 3s ease-in-out infinite;
+  }
+  
+  .download-visual svg {
+    color: var(--color-success);
+    filter: drop-shadow(0 0 20px rgba(0, 200, 83, 0.5));
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @media (min-width: 1024px) {
+    .download-content {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .download-text {
+      text-align: left;
+    }
+    
+    .download-description {
+      margin-left: 0;
+    }
+    
+    .download-title {
+      font-size: var(--text-4xl);
+    }
+  }
+</style>

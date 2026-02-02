@@ -1,0 +1,224 @@
+---
+import { site, canonicalUrl } from '../config/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string[];
+  ogImage?: string;
+  noIndex?: boolean;
+}
+
+const { 
+  title = site.seo.title,
+  description = site.seo.description,
+  keywords = site.seo.keywords,
+  ogImage = site.seo.ogImage,
+  noIndex = false
+} = Astro.props;
+
+const canonical = canonicalUrl(Astro.url.pathname);
+const keywordsString = keywords.join(', ');
+
+// Schema.org Organization
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.brand.name,
+  url: site.canonical,
+  logo: `${site.canonical}/logo_flujo.png`,
+  description: site.brand.description,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: `+${site.whatsappNumber}`,
+    contactType: 'customer service',
+    availableLanguage: ['Spanish', 'English']
+  },
+  sameAs: [
+    'https://www.facebook.com/flujooficial',
+    'https://www.instagram.com/flujooficial'
+  ]
+};
+
+// Schema.org WebSite
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.brand.name,
+  url: site.canonical,
+  description: site.seo.description,
+  inLanguage: 'es',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${site.canonical}/?q={search_term_string}`,
+    'query-input': 'required name=search_term_string'
+  }
+};
+
+// Schema.org Product (Streaming Service)
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Flujo TV Premium Global',
+  description: site.brand.description,
+  image: `${site.canonical}/og-image.png`,
+  url: site.canonical,
+  brand: {
+    '@type': 'Brand',
+    name: site.brand.name
+  },
+  offers: site.pricing.plans.map(plan => ({
+    '@type': 'Offer',
+    name: plan.name,
+    price: plan.price,
+    priceCurrency: site.pricing.currencyCode,
+    availability: 'https://schema.org/InStock',
+    url: `${site.canonical}/#plans`,
+    priceValidUntil: '2026-12-31',
+    itemCondition: 'https://schema.org/NewCondition',
+    seller: {
+      '@type': 'Organization',
+      name: site.brand.name
+    },
+    shippingDetails: {
+      '@type': 'OfferShippingDetails',
+      shippingRate: {
+        '@type': 'MonetaryAmount',
+        value: 0,
+        currency: 'USD'
+      },
+      deliveryTime: {
+        '@type': 'ShippingDeliveryTime',
+        handlingTime: {
+          '@type': 'QuantitativeValue',
+          minValue: 0,
+          maxValue: 0,
+          unitCode: 'DAY'
+        },
+        transitTime: {
+          '@type': 'QuantitativeValue',
+          minValue: 0,
+          maxValue: 0,
+          unitCode: 'DAY'
+        }
+      }
+    }
+  })),
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '2150',
+    bestRating: '5',
+    worstRating: '1'
+  }
+};
+
+// Schema.org BreadcrumbList
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Inicio',
+      item: site.canonical
+    }
+  ]
+};
+
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Favicon & Manifest -->
+    <link rel="icon" type="image/png" href="/logo_flujo.png" />
+    <link rel="apple-touch-icon" href="/logo_flujo.png" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://wa.me" />
+    
+    <!-- SEO Primary Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywordsString} />
+    <meta name="author" content={site.brand.name} />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonical} />
+    
+    <!-- Robots -->
+    {noIndex ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : (
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    )}
+    
+    <!-- Language & Region -->
+    <meta name="language" content="Spanish" />
+    <link rel="alternate" hreflang="es" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={canonical} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${site.canonical}${ogImage}`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es" />
+    <meta property="og:site_name" content={site.brand.name} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={`${site.canonical}${ogImage}`} />
+    {site.seo.twitterHandle && <meta name="twitter:site" content={site.seo.twitterHandle} />}
+    
+    <!-- Mobile App Meta -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#0A0E1A" />
+    
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </head>
+  <body>
+    <slot />
+    
+    <!-- Language Switcher Script -->
+    <script>
+      // Initialize language from localStorage or default to 'es'
+      const currentLang = localStorage.getItem('flujo-language') || 'es';
+      document.documentElement.lang = currentLang;
+      
+      // Update all translatable elements on page load
+      function updatePageTranslations() {
+        const lang = localStorage.getItem('flujo-language') || 'es';
+        // This will be handled by page reload in LanguageSwitcher component
+        // Future enhancement: client-side translation updates
+      }
+      
+      // Call on page load
+      updatePageTranslations();
+    </script>
+  </body>
+</html>

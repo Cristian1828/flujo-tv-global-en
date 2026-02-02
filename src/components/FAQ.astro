@@ -1,0 +1,163 @@
+---
+import { getTranslations } from '../config/i18n';
+
+const currentLang = 'es';
+const t = getTranslations(currentLang);
+
+const faqs = [
+  { id: 'q1', ...t.faq.questions.q1 },
+  { id: 'q2', ...t.faq.questions.q2 },
+  { id: 'q3', ...t.faq.questions.q3 },
+  { id: 'q4', ...t.faq.questions.q4 },
+];
+---
+
+<section class="faq section" id="faq">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title" data-i18n="faq.title">{t.faq.title}</h2>
+    </div>
+    
+    <!-- FAQ Accordion -->
+    <div class="faq-accordion">
+      {faqs.map((faq, index) => (
+        <div class="faq-item">
+          <button class="faq-question" data-faq-index={index}>
+            <span data-i18n={`faq.questions.${faq.id}.question`}>{faq.question}</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p data-i18n={`faq.questions.${faq.id}.answer`}>{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background: var(--color-dark-secondary);
+  }
+  
+  .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--space-3xl);
+  }
+  
+  .section-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .faq-item {
+    background: var(--color-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-base);
+  }
+  
+  .faq-item:hover {
+    border-color: rgba(0, 102, 255, 0.3);
+  }
+  
+  .faq-item.active {
+    border-color: var(--color-primary);
+  }
+  
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background: transparent;
+    border: none;
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-light);
+    text-align: left;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  
+  .faq-question:hover {
+    color: var(--color-primary-light);
+  }
+  
+  .faq-question svg {
+    flex-shrink: 0;
+    transition: transform var(--transition-base);
+  }
+  
+  .faq-item.active .faq-question svg {
+    transform: rotate(180deg);
+  }
+  
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-base);
+  }
+  
+  .faq-item.active .faq-answer {
+    max-height: 500px;
+  }
+  
+  .faq-answer p {
+    padding: 0 var(--space-lg) var(--space-lg);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-gray-light);
+  }
+  
+  @media (min-width: 1024px) {
+    .section-title {
+      font-size: var(--text-4xl);
+    }
+  }
+</style>
+
+<script>
+  // FAQ Accordion Logic
+  const faqItems = document.querySelectorAll('.faq-item');
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach((question, index) => {
+    question.addEventListener('click', () => {
+      const item = faqItems[index];
+      const isActive = item.classList.contains('active');
+      
+      // Close all items
+      faqItems.forEach(i => i.classList.remove('active'));
+      
+      // Open clicked item if it wasn't active
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    });
+  });
+  
+  // Open first item by default
+  if (faqItems.length > 0) {
+    faqItems[0].classList.add('active');
+  }
+</script>
