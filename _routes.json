@@ -1,0 +1,20 @@
+{
+    "version": 1,
+    "include": [
+        "/*"
+    ],
+    "exclude": [
+        "/_astro/*",
+        "/favicon.ico",
+        "/logo_flujo.png",
+        "/og-image.png",
+        "/carousel-*.png",
+        "/benefits.png",
+        "/devices.png",
+        "/download.png",
+        "/how-it-works.png",
+        "/robots.txt",
+        "/sitemap.xml",
+        "/manifest.json"
+    ]
+}
