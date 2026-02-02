@@ -102,6 +102,14 @@ const productSchema = {
           unitCode: 'DAY'
         }
       }
+    },
+    hasMerchantReturnPolicy: {
+      '@type': 'MerchantReturnPolicy',
+      applicableCountry: 'US',
+      returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+      merchantReturnDays: 0,
+      returnMethod: 'https://schema.org/ReturnByMail',
+      returnFees: 'https://schema.org/FreeReturn'
     }
   })),
   aggregateRating: {
