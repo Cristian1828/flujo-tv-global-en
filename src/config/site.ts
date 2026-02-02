@@ -1,7 +1,7 @@
-// Site configuration for flujotvglobal.com
+// Site configuration for global.flujooficial.com
 export const site = {
-  domain: 'flujotvglobal.com',
-  canonical: 'https://flujotvglobal.com',
+  domain: 'global.flujooficial.com',
+  canonical: 'https://global.flujooficial.com',
   whatsappNumber: '51914326729',
   email: 'soporte@flujooficial.com',
 
@@ -112,7 +112,6 @@ export const site = {
   },
 
   // Legacy compatibility
-  brand: 'FLUJO TV',
   localeLabel: 'Premium',
   defaultWhatsappText: 'Hola, quiero el instalador de Flujo TV para mi dispositivo',
 
