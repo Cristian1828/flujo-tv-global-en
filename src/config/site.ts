@@ -19,7 +19,7 @@ export const site = {
         id: '1m',
         name: 'Mensual',
         duration: '1 Mes',
-        price: 9,
+        price: 9.99,
         highlight: false,
         label: 'IDEAL PARA PROBAR'
       },
@@ -27,7 +27,7 @@ export const site = {
         id: '3m',
         name: 'Trimestral',
         duration: '3 Meses',
-        price: 27,
+        price: 27.99,
         highlight: true,
         label: 'RECOMENDADO'
       },
@@ -35,7 +35,7 @@ export const site = {
         id: '6m',
         name: 'Semestral',
         duration: '6 + 1 Meses Gratis',
-        price: 49,
+        price: 49.99,
         highlight: false,
         label: '+1 MES GRATIS (7 TOTAL)'
       },
@@ -43,7 +43,7 @@ export const site = {
         id: '12m',
         name: 'Anual',
         duration: '12 + 2 Meses Gratis',
-        price: 95,
+        price: 95.99,
         highlight: false,
         label: 'MEJOR OFERTA - AHORRAS 25%'
       }
